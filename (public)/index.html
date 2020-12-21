@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance App</title>
+    <link rel="icon" href="../assests/f1.png" />
+    <link rel="stylesheet" href="loginSignUp.css" />
+  </head>
+  <body>
+    <div id="main1">
+      <div id="main">
+        <h2 style="color: gray;">LOGIN</h2>
+        <input
+          type="text"
+          name=""
+          id="email"
+          placeholder="email"
+          height="50px"
+        />
+        <br />
+        <br />
+        <input type="password" name="" id="password" placeholder="password" />
+        <br />
+        <br />
+
+        <br />
+
+        <button
+          id="b1"
+          style="
+            width: 260px;
+            height: 50px;
+            border-radius: 5px;
+            border: white;
+            color: white;
+          "
+          onclick="signin()"
+        >
+          Sign in
+        </button>
+        <br />
+        <br />
+        <br />
+        <a href="" id="hover2">lost your password?</a>
+      </div>
+    </div>
+    <p style="color: white;">
+      don't have an account?
+      <a href="signUp.html" id="hover">Sign up here!</a>
+    </p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCBCmQt9w8jv1UyFs5_Kwn-hJjJRd_jtyA",
+        authDomain: "financeapp-9896e.firebaseapp.com",
+        databaseURL: "https://financeapp-9896e.firebaseio.com",
+        projectId: "financeapp-9896e",
+        storageBucket: "financeapp-9896e.appspot.com",
+        messagingSenderId: "354309494181",
+        appId: "1:354309494181:web:1d9e9831f129230f93844c",
+        measurementId: "G-0W0GH5KRL2",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="./loginSignUp.js"></script>
+  </body>
+</html>

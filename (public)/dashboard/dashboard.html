@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance App</title>
+    <link rel="icon" href="../assests/f1.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="../transaction/transaction.css" />
+    <!-- <link rel="stylesheet" href="../dashboard/dashboard.css" /> -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  </head>
+  <body>
+    <!--header-->
+    <div class="header">
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="../transaction/transaction.html">- Transaction</a>
+        <a href="../index.html">- Logout</a>
+        <!-- <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a> -->
+      </div>
+
+      <!-- Use any element to open the sidenav -->
+      <div style="margin-right: 40px;">
+        <span style="margin-right: 1050px;" id="openNav" onclick="openNav()"
+          >&#9776;</span
+        >
+      </div>
+      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+      <div id="main"></div>
+      <div class="padding" style="margin-left: -50px;">
+        welcome <span id="userName" style="font-weight: 750;">expertizo</span>
+      </div>
+      <img
+        class="padding"
+        width="50px"
+        src="../transaction/avatar-370-456322.png"
+        alt=""
+      />
+      <p
+        id="powerButton"
+        class="fa fa-fw fa-power-off"
+        onclick="logout()"
+        style="color: white; margin-top: auto; margin-bottom: auto;"
+      ></p>
+      <!-- <a
+        href="../transaction/login.html"
+        target="_blank"
+        class="fa fa-fw fa-power-off"
+        style="color: white; text-decoration: none;"
+      ></a> -->
+      <!-- <p class="padding" onclick="logout()">logout</p> -->
+    </div>
+
+    <div class="dashboard-cardboard">
+      <div class="dashboard-cardboard-inner">
+        <div
+          style="width: 307px; margin-top: 14px; margin-left: 16px;"
+          class="mui-col-md-6 mui-textfield"
+        ></div>
+        <br /><br /><br />
+
+        <div
+          class="mui-col-md-6 mui-textfield"
+          id="reportrange"
+          style="
+            cursor: pointer;
+
+            width: 305px;
+            margin-left: -303px;
+          "
+        >
+          <label> Date Range</label>
+          <div style="margin-bottom: -25px;">
+            <i class="fa fa-calendar"></i>&nbsp;
+            <span></span>
+            <i class="fa fa-caret-down"></i>
+          </div>
+          <input
+            style="height: 32px;"
+            type="text"
+            direction="down"
+            multiple=""
+            autocomplete="off"
+            role="input"
+            name="multiple"
+            value=""
+          />
+        </div>
+
+        <div class="dashboard-cardboard-inner-income-div">
+          <div>
+            <p style="margin-left: 100px; margin-top: -49px;">
+              Your Total Income Are
+            </p>
+          </div>
+          <div style="margin-left: -182px;">
+            <h2 style="color: green; margin-left: 20px;">
+              <i class="fa fa-fw fa-usd"></i>
+              <span id="totalIncome">0</span>
+              <i class="fa fa-fw fa-arrow-up"></i>
+            </h2>
+          </div>
+        </div>
+        <div class="dashboard-cardboard-inner-Expense-div">
+          <p style="margin-left: 97px; margin-top: -49px;">
+            Your Total Expense Are
+          </p>
+          <div style="margin-left: -182px;">
+            <h2 style="color: #f53737; margin-left: 20px;">
+              <i class="fa fa-fw fa-usd"></i>
+              <span id="totalExpense">0</span>
+              <i class="fa fa-fw fa-arrow-down"></i>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="
+        margin-right: 10px;
+
+        display: flex;
+        margin-bottom: 100px;
+        border: 0px;
+        /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); */
+      "
+    >
+      <div style="margin-left: auto;">
+        <div
+          style="
+            border: 0px;
+            width: 620px;
+            height: 380px;
+            margin-left: auto;
+            margin-right: 25px;
+            background-color: white;
+
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          "
+        >
+          <div
+            style="
+              width: 620px;
+              height: 70px;
+              background-color: green;
+              text-align: center;
+              color: white;
+            "
+          >
+            <h2 style="padding-top: 5px;">Recent Income</h2>
+          </div>
+
+          <div>
+            <table id="transaction-table1" class="table">
+              <tbody>
+                <thead>
+                  <tr>
+                    <th>Amount</th>
+                    <th>Catrgory</th>
+                    <th></th>
+                  </tr>
+                </thead>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <a
+          href="../transaction/transaction.html"
+          style="text-decoration: none; margin-left: 540px;"
+          ><h5 style="margin-left: 540px;">View all</h5></a
+        >
+      </div>
+      <div style="margin-right: auto;">
+        <div
+          style="
+            border: 0px;
+            width: 620px;
+            height: 380px;
+            margin-right: auto;
+            margin-left: 20px;
+            background-color: white;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          "
+        >
+          <div>
+            <div
+              style="
+                width: 620px;
+                height: 70px;
+                background-color: red;
+                text-align: center;
+                color: white;
+              "
+            >
+              <h2 style="padding-top: 5px;">Recent Expense</h2>
+            </div>
+            <table id="transaction-table" class="table">
+              <tbody id="rex">
+                <thead>
+                  <tr>
+                    <th>Amount</th>
+                    <th>Catrgory</th>
+                    <th></th>
+                  </tr>
+                </thead>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <a
+          href="../transaction/transaction.html"
+          style="text-align: right; margin-left: 580px; text-decoration: none;"
+          ><h5 style="margin-right: 15px;">View all</h5></a
+        >
+      </div>
+    </div>
+    <div
+      style="
+        border: 0px;
+        width: 1290px;
+        height: 520px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        background-color: white;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      "
+    >
+      <div
+        style="
+          color: white;
+          background-color: green;
+          height: 80px;
+          width: 1290px;
+          border: 0px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 30px;
+        "
+      >
+        <h3 style="padding-top: 20px; padding-left: 20px;">Overview</h3>
+      </div>
+      <canvas
+        id="lineChart"
+        style="
+          width: 900px;
+          height: 280px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      ></canvas>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCBCmQt9w8jv1UyFs5_Kwn-hJjJRd_jtyA",
+        authDomain: "financeapp-9896e.firebaseapp.com",
+        databaseURL: "https://financeapp-9896e.firebaseio.com",
+        projectId: "financeapp-9896e",
+        storageBucket: "financeapp-9896e.appspot.com",
+        messagingSenderId: "354309494181",
+        appId: "1:354309494181:web:1d9e9831f129230f93844c",
+        measurementId: "G-0W0GH5KRL2",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
